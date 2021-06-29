@@ -1,0 +1,3 @@
+include ':MVPCore'
+include ':app'
+rootProject.name = "FrameworkApp"
