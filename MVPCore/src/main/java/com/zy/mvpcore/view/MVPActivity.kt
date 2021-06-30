@@ -9,7 +9,7 @@ import com.zy.mvpcore.BasePresenter
 abstract class MVPActivity<P:BasePresenter<*,*>>: BaseActivity() {
     protected lateinit var mPresenter: P
     init {
-        createPresenter()
+        mPresenter= createPresenter()
     }
 
     abstract fun createPresenter()
