@@ -12,5 +12,5 @@ abstract class MVPActivity<P:BasePresenter<*,*>>: BaseActivity() {
         mPresenter= createPresenter()
     }
 
-    abstract fun createPresenter()
+    abstract fun createPresenter(): P
 }
