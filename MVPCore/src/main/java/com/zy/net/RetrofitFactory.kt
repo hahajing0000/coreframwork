@@ -33,8 +33,8 @@ class RetrofitFactory {
     /**
      * 创建服务实例
      */
-    fun <T> create(t:Class<T>):T{
-       return retrofit.create(t)
+    fun <T> create(t:Class<*>):T{
+       return retrofit.create(t) as T
     }
 
     inner class Builder{
