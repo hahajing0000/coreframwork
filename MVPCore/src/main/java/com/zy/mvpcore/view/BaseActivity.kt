@@ -1,14 +1,9 @@
 package com.zy.mvpcore.view
 
-import android.graphics.Color
-import android.os.Build
+import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
-import android.view.Window
-import android.view.WindowManager
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import com.zy.common.StatusBarUtils
 
@@ -23,11 +18,26 @@ abstract class BaseActivity : AppCompatActivity() {
             StatusBarUtils.initBar(this)
         }
         setContentView(getLayoutId())
-
+        init();
         initData()
         initEvent()
 
     }
+
+    override fun onStop() {
+        super.onStop()
+        releaseResource()
+    }
+
+    /**
+     * 资源释放
+     */
+    abstract fun releaseResource()
+
+    /**
+     * 资源初始化
+     */
+    abstract fun init()
 
     /**
      * 初始化页面加载数据
@@ -59,11 +69,58 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     /**
-     * 显示消息提示
+     * 显示短消息提示
      */
-    fun showMsg(msg:String){
+    fun showShortMsg(msg:String){
         Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
     }
 
+    /**
+     * 显示长消息提示
+     */
+    fun showLongMsg(msg:String){
+        Toast.makeText(this,msg,Toast.LENGTH_LONG).show()
+    }
 
+    /**
+     * 跳转到目标Activity 无参数
+     */
+    fun jumpActivity(target:Class<*>){
+        startActivity(Intent(this@BaseActivity,target))
+    }
+
+    /**
+     * 跳转到目标Activity 有参数 参数key固定为params
+     */
+    fun jumpActivity(target: Class<*>,params:Bundle?){
+        val intent:Intent= Intent(this@BaseActivity,target)
+        intent.putExtra("params",params)
+        startActivity(intent)
+    }
+
+    /**
+     * 跳转到目标Activity 并接收返回结果
+     */
+    fun jumpActivityForResult(target: Class<*>,requestCode:Int=0){
+        startActivityForResult(Intent(this@BaseActivity,target),requestCode)
+    }
+
+    /**
+     * 跳转到目标Activity 有参数 并接收返回结果
+      */
+    fun jumpActivityForResult(target: Class<*>,params:Bundle?,requestCode:Int=0){
+        val intent:Intent= Intent(this@BaseActivity,target)
+        intent.putExtra("params",params)
+        startActivityForResult(intent,requestCode)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        getReulstForActivity(requestCode,resultCode,data)
+    }
+
+    /**
+     * 获取Activity返回的结果数据
+     */
+    abstract fun getReulstForActivity(requestCode: Int, resultCode: Int, data: Intent?)
 }
