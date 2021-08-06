@@ -13,6 +13,10 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @ProjectName: FrameworkApp
@@ -26,7 +30,8 @@ import java.util.concurrent.Executors;
  * @UpdateRemark:
  * @Version: 1.0
  */
-public class MsgBusImpl {
+class MsgBusImpl implements IMsgBus {
+
     /**
      * key 订阅者的class名称，value订阅者的封装结构
      */
@@ -42,7 +47,8 @@ public class MsgBusImpl {
      * @return 订阅结果
      * @author zhangyue
      * @time 2021/8/5 15:01
-     */ 
+     */
+    @Override
     public Boolean register(Object subscriber){
         String key=subscriber.getClass().getName();
         if (subscribers.containsKey(key)){
@@ -65,6 +71,7 @@ public class MsgBusImpl {
      * @param <T>
      * @return
      */
+    @Override
     public <T> Boolean post(final T data){
         List<SubscriberMethodState> subscribers = paramsSubscriberMap.get(data.getClass().getName());
         if (subscribers==null||subscribers.size()==0){
@@ -120,6 +127,7 @@ public class MsgBusImpl {
      * @param subscriber
      * @return
      */
+    @Override
     public Boolean unregister(Object subscriber){
         String key=subscriber.getClass().getName();
         if (subscribers.containsKey(key)){
@@ -202,7 +210,12 @@ public class MsgBusImpl {
      */
     private ExecutorService getExecutorService() {
         if (null==executorService){
-            executorService=Executors.newCachedThreadPool();
+            executorService= new ThreadPoolExecutor(0, Integer.MAX_VALUE, 60, TimeUnit.SECONDS, new LinkedBlockingQueue(), new ThreadFactory() {
+                @Override
+                public Thread newThread(Runnable r) {
+                    return new Thread(r);
+                }
+            });
         }
         return executorService;
     }

@@ -1,5 +1,7 @@
 package com.zy.msgbus;
 
+import java.net.PortUnreachableException;
+
 /**
  * @ProjectName: FrameworkApp
  * @Package: com.zy.msgbus
@@ -17,14 +19,24 @@ public class MsgBus {
         private static MsgBus INSTANCE=new MsgBus();
     }
 
-    private MsgBusImpl impl;
+    private IMsgBus impl;
     private MsgBus(){
         impl=new MsgBusImpl();
     }
     public static MsgBus getInstance(){return MsgBusHolder.INSTANCE;}
 
+    /**
+     * 设置你自己的实现
+     * @param 
+     * @return 
+     * @author zhangyue
+     * @time 2021/8/6 10:56
+     */ 
+    public void setMsgBusImpl(IMsgBus msgBusImpl){
+        impl=msgBusImpl;
+    }
 
-    public MsgBusImpl getDefault(){
+    public IMsgBus getDefault(){
         return impl;
     }
 }
