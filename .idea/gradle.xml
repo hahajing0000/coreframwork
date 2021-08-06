@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/Common" />
             <option value="$PROJECT_DIR$/Logger" />
             <option value="$PROJECT_DIR$/MVPCore" />
+            <option value="$PROJECT_DIR$/MsgBus" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>

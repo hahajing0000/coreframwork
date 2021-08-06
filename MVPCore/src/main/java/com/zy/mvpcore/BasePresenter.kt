@@ -6,7 +6,7 @@ import java.lang.ref.SoftReference
  *@author:zhangyue
  *@date:2021/6/29
  */
-abstract class BasePresenter<Repo : BaseRepository<*>,V:IView> {
+abstract class BasePresenter<Repo : BaseRepository,V:IView> {
     protected lateinit var mView:SoftReference<V>
     protected lateinit var mRepo:Repo
     constructor(v:V){
