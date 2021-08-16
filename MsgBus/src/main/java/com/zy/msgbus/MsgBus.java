@@ -30,7 +30,7 @@ public class MsgBus {
      * @param 
      * @return 
      * @author zhangyue
-     * @time 2021/8/6 10:56
+     * @time 2021/8/9 15:46
      */ 
     public void setMsgBusImpl(IMsgBus msgBusImpl){
         impl=msgBusImpl;

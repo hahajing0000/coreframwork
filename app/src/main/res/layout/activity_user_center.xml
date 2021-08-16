@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+    <data class="UserCenterDataSource">
+        <variable
+            name="viewModel"
+            type="com.zy.frameworkapp.mvvm.viewmodel.UserCenterViewModel" />
+        <variable
+            name="mine"
+            type="com.zy.frameworkapp.mvvm.view.UserCenterActivity" />
+    </data>
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <EditText
+            android:hint="请输入姓名"
+            android:text="@={viewModel.pageDataSource.name}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></EditText>
+        <EditText
+            android:hint="请输入住址"
+            android:text="@={viewModel.pageDataSource.address}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></EditText>
+        <Button
+            android:onClick="@{(view)->mine.onRegister(view,viewModel.pageDataSource)}"
+            android:text="注册"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></Button>
+    </LinearLayout>
+
+</layout>
