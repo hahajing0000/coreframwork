@@ -25,7 +25,7 @@ import java.util.Map;
  * @UpdateRemark:
  * @Version: 1.0
  */
-public abstract class BaseActivity<VM extends BaseViewModel,Binding extends ViewDataBinding> extends AppCompatActivity {
+public abstract class BaseMVVMActivity<VM extends BaseViewModel,Binding extends ViewDataBinding> extends AppCompatActivity {
     protected Binding mBinding;
     protected VM mViewModel;
     private HashMap<Integer,Object> mMap=new HashMap<>();
@@ -44,6 +44,13 @@ public abstract class BaseActivity<VM extends BaseViewModel,Binding extends View
         initEvent();
     }
 
+    /**
+     * 创建ViewModel实例
+     * @param 
+     * @return 
+     * @author zhangyue
+     * @time 2021/8/17 8:59
+     */ 
     protected abstract VM createViewModel();
 
     /**
@@ -81,8 +88,22 @@ public abstract class BaseActivity<VM extends BaseViewModel,Binding extends View
         }
     }
 
+    /**
+     * 准备设置数据源
+     * @param 
+     * @return 
+     * @author zhangyue
+     * @time 2021/8/17 8:59
+     */ 
     protected abstract void prepareSetVars(HashMap<Integer, Object> mMap);
 
+    /**
+     * 获取布局资源id
+     * @param
+     * @return 
+     * @author zhangyue
+     * @time 2021/8/17 9:00
+     */ 
     protected abstract int getLayoutId();
 
 }

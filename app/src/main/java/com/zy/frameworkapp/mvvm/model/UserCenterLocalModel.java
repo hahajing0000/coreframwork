@@ -1,4 +1,4 @@
-package com.zy.frameworkapp.mvvm;
+package com.zy.frameworkapp.mvvm.model;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

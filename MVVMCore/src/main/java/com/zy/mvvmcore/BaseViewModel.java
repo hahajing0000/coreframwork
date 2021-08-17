@@ -1,5 +1,9 @@
 package com.zy.mvvmcore;
 
+import androidx.lifecycle.Lifecycle;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
 
 /**
@@ -14,10 +18,13 @@ import androidx.lifecycle.ViewModel;
  * @UpdateRemark:
  * @Version: 1.0
  */
-public abstract class BaseViewModel<Repo extends BaseRepository> extends ViewModel {
+public abstract class BaseViewModel<Repo extends BaseRepository> extends ViewModel implements LifecycleObserver {
     protected Repo mRepository;
-    public BaseViewModel(){
+    private LifecycleOwner mOwner;
+    public BaseViewModel(LifecycleOwner owner){
         mRepository=createRepository();
+        mOwner=owner;
+        mOwner.getLifecycle().addObserver(this);
     }
 
 
@@ -29,5 +36,35 @@ public abstract class BaseViewModel<Repo extends BaseRepository> extends ViewMod
      * @time 2021/8/16 16:26
      */ 
     protected abstract Repo createRepository();
-    
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
+    public void uiConnection(){
+        initResource();
+    }
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+    public void disConnection(){
+        releaseResource();
+        mOwner.getLifecycle().removeObserver(this);
+    }
+
+    /**
+     * 释放资源
+     * @param
+     * @return
+     * @author zhangyue
+     * @time 2021/8/17 9:16
+     */
+    protected  void releaseResource(){}
+
+    /**
+     * 资源的初始化
+     * @param
+     * @return
+     * @author zhangyue
+     * @time 2021/8/17 9:16
+     */
+    protected void initResource(){}
+
+
 }

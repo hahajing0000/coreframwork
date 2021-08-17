@@ -1,12 +1,11 @@
 package com.zy.frameworkapp.mvvm.repository;
 
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
-import com.zy.common.utils.ThreadUtils;
-import com.zy.frameworkapp.mvvm.UserCenterLocalModel;
+import com.zy.frameworkapp.mvvm.model.UserCenterLocalModel;
 import com.zy.frameworkapp.mvvm.entity.UserEntity;
 import com.zy.mvvmcore.BaseRepository;
+import com.zy.mvvmcore.Model;
 
 /**
  * @ProjectName: FrameworkApp
@@ -20,13 +19,17 @@ import com.zy.mvvmcore.BaseRepository;
  * @UpdateRemark:
  * @Version: 1.0
  */
-public class UserCenterRepository extends BaseRepository<UserCenterLocalModel> {
-    @Override
-    protected UserCenterLocalModel createModel() {
-        return new UserCenterLocalModel();
-    }
+public class UserCenterRepository extends BaseRepository {
+
+    @Model
+    UserCenterLocalModel localModel;
 
     public LiveData<UserEntity> register(UserEntity entity){
-       return mModel.register(entity);
+        /**
+         * 如果有网我们用的Remote的Model
+         * 如果没网我们用的Local的Model
+         */
+
+       return localModel.register(entity);
     }
 }

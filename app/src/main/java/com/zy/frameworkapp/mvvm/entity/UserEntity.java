@@ -1,5 +1,8 @@
 package com.zy.frameworkapp.mvvm.entity;
 
+import androidx.databinding.BaseObservable;
+import androidx.databinding.Bindable;
+
 /**
  * @ProjectName: FrameworkApp
  * @Package: com.zy.frameworkapp.mvvm.entity
@@ -12,7 +15,7 @@ package com.zy.frameworkapp.mvvm.entity;
  * @UpdateRemark:
  * @Version: 1.0
  */
-public class UserEntity {
+public class UserEntity  extends BaseObservable {
     private String phoneNumber;
     private String name;
     private int age;
@@ -47,6 +50,7 @@ public class UserEntity {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+
     }
 
     public String getName() {

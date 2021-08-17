@@ -2,6 +2,8 @@ package com.zy.frameworkapp.mvvm.viewmodel;
 
 import android.util.Log;
 
+import androidx.databinding.ObservableField;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -23,8 +25,18 @@ import com.zy.mvvmcore.BaseViewModel;
  * @Version: 1.0
  */
 public class UserCenterViewModel extends BaseViewModel<UserCenterRepository> {
+
+    /**
+     * 作为XML中数据绑定的数据源
+     * @param
+     * @return 
+     * @author zhangyue
+     * @time 2021/8/17 9:05
+     */ 
     public MutableLiveData<UserEntity> pageDataSource=new MutableLiveData<>();;
-    public UserCenterViewModel(){
+
+    public UserCenterViewModel(LifecycleOwner owner) {
+        super(owner);
         UserEntity userEntity=new UserEntity();
         if (ThreadUtils.isMainThread()){
             pageDataSource.setValue(userEntity);
@@ -33,13 +45,16 @@ public class UserCenterViewModel extends BaseViewModel<UserCenterRepository> {
         }
     }
 
+
     @Override
     protected UserCenterRepository createRepository() {
 
         return new UserCenterRepository();
     }
 
+
     public LiveData<UserEntity> register(UserEntity entity){
        return mRepository.register(entity);
     }
+
 }
