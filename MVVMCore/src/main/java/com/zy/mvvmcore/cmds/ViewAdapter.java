@@ -35,16 +35,12 @@ public class ViewAdapter {
 //                }
 //            }
 //        });
-
         RxView.clicks(view).throttleFirst(3, TimeUnit.SECONDS)
                 .subscribe(new Consumer<Object>() {
                     @Override
                     public void accept(Object o) throws Exception {
                         if (null!=clickCmd){
-                            Log.d("123", "accept: .................");
                             clickCmd.execute();
-
-
                         }
                     }
                 });
