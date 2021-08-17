@@ -1,4 +1,4 @@
-package com.zy.mvvmcore;
+package com.zy.mvvmcore.model;
 
 /**
  * @ProjectName: FrameworkApp

@@ -1,10 +1,12 @@
-package com.zy.mvvmcore;
+package com.zy.mvvmcore.viewmodel;
 
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.OnLifecycleEvent;
 import androidx.lifecycle.ViewModel;
+
+import com.zy.mvvmcore.repository.BaseRepository;
 
 /**
  * @ProjectName: FrameworkApp

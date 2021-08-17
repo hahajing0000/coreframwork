@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData;
 
 import com.zy.frameworkapp.mvvm.model.UserCenterLocalModel;
 import com.zy.frameworkapp.mvvm.entity.UserEntity;
-import com.zy.mvvmcore.BaseRepository;
-import com.zy.mvvmcore.Model;
+import com.zy.mvvmcore.repository.BaseRepository;
+import com.zy.mvvmcore.model.Model;
 
 /**
  * @ProjectName: FrameworkApp

@@ -1,8 +1,5 @@
 package com.zy.frameworkapp.mvvm.viewmodel;
 
-import android.util.Log;
-
-import androidx.databinding.ObservableField;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,7 +7,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.zy.common.utils.ThreadUtils;
 import com.zy.frameworkapp.mvvm.entity.UserEntity;
 import com.zy.frameworkapp.mvvm.repository.UserCenterRepository;
-import com.zy.mvvmcore.BaseViewModel;
+import com.zy.mvvmcore.viewmodel.BaseViewModel;
 
 /**
  * @ProjectName: FrameworkApp

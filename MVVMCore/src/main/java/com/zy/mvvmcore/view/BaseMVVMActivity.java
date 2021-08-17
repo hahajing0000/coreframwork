@@ -1,14 +1,13 @@
 package com.zy.mvvmcore.view;
 
 import android.os.Bundle;
-import android.util.ArrayMap;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
-import com.zy.mvvmcore.BaseViewModel;
+import com.zy.mvvmcore.viewmodel.BaseViewModel;
 
 import java.util.HashMap;
 import java.util.Map;

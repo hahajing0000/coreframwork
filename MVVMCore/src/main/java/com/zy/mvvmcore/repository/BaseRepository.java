@@ -1,8 +1,8 @@
-package com.zy.mvvmcore;
+package com.zy.mvvmcore.repository;
 
 import com.zy.mvvmcore.common.MVVMModelException;
+import com.zy.mvvmcore.model.Model;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 
 /**
@@ -28,7 +28,7 @@ public abstract class BaseRepository {
      * @param 
      * @return 
      * @author zhangyue
-     * @time 2021/8/17 9:58
+     * @time 2021/8/17 10:04
      */ 
     private void injectModel() {
         Class<? extends BaseRepository> clazz = this.getClass();

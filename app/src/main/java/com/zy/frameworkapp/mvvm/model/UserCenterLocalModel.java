@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.zy.common.utils.ThreadUtils;
 import com.zy.frameworkapp.mvvm.entity.UserEntity;
-import com.zy.mvvmcore.IModel;
+import com.zy.mvvmcore.model.IModel;
 
 /**
  * @ProjectName: FrameworkApp

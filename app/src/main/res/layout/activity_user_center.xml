@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></EditText>
         <Button
-            android:onClick="@{(view)->mine.onRegister(view,viewModel.pageDataSource)}"
+            app:onClickCmd="@{mine.bindCommand}"
             android:text="注册"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></Button>
