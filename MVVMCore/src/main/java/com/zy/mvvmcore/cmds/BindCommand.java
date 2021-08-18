@@ -36,13 +36,29 @@ public class BindCommand<T,R> {
         this.function1= _function;
     }
 
+    public Action getAction() {
+        return action;
+    }
+
+    public Action1 getAction1() {
+        return action1;
+    }
+
+    public Function getFunction() {
+        return function;
+    }
+
+    public Function1 getFunction1() {
+        return function1;
+    }
+
     public void execute(){
         if (action!=null){
             action.Execute();
         }
     }
 
-    public void Execute(T param){
+    public void execute(T param){
         if (action1!=null){
             action1.Execute(param);
         }

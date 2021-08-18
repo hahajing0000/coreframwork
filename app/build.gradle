@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -26,6 +28,8 @@ android {
     dataBinding{
         enabled=true
     }
+
+//    kapt.includeCompileClasspath = false
 }
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
@@ -37,6 +41,10 @@ dependencies {
     implementation project(path: ':MsgBus')
     implementation project(path: ':MVVMCore')
     implementation project(path: ':Common')
+    implementation project(path: ':ZRouter')
+    implementation project(path: ':Storage')
+    kapt project(path: ':apt-router-processor')
+    implementation project(path: ':apt-router-annotation')
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'

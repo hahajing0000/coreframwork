@@ -1,4 +1,4 @@
-package com.zy.mvvmcore.cmds;
+package com.zy.mvvmcore.adapter;
 
 import android.util.Log;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.databinding.BindingAdapter;
 
 import com.jakewharton.rxbinding2.view.RxView;
+import com.zy.mvvmcore.cmds.BindCommand;
 
 import java.util.concurrent.TimeUnit;
 
@@ -40,7 +41,12 @@ public class ViewAdapter {
                     @Override
                     public void accept(Object o) throws Exception {
                         if (null!=clickCmd){
-                            clickCmd.execute();
+                            if(clickCmd.getAction()!=null){
+                                clickCmd.execute();
+                            }else if (clickCmd.getAction1()!=null){
+                                clickCmd.execute();
+                            }
+
                         }
                     }
                 });

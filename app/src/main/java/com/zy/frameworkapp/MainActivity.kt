@@ -9,6 +9,7 @@ import com.zy.msgbus.Subscribe
 import com.zy.msgbus.ThreadMode
 import kotlinx.android.synthetic.main.activity_main.*
 
+
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

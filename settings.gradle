@@ -1,3 +1,4 @@
+include ':Storage'
 include ':MVVMCore'
 include ':apt-router-processor'
 include ':apt-router-annotation'

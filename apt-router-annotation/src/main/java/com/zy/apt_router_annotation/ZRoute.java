@@ -19,6 +19,6 @@ import java.lang.annotation.Target;
  */
 @Retention(RetentionPolicy.CLASS)
 @Target(ElementType.TYPE)
-public  @interface Route {
+public  @interface ZRoute {
     String path();
 }
