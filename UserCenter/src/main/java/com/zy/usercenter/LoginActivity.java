@@ -1,19 +1,17 @@
-package com.zy.frameworkapp;
+package com.zy.usercenter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import com.zy.apt_router_annotation.ZRoute;
-import com.zy.zrouter.ZRouter;
 
-@ZRoute(path = "/main/activity3")
-public class MainActivity3 extends AppCompatActivity {
+@ZRoute(path = "/usercenter/login")
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
-
+        setContentView(R.layout.activity_login);
     }
 }

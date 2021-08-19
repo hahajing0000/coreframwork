@@ -3,9 +3,11 @@ package com.zy.apt_router_processor;
 import com.google.auto.service.AutoService;
 import com.zy.apt_router_annotation.ZRoute;
 
+import java.io.IOException;
 import java.io.Writer;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
@@ -96,31 +98,69 @@ public class RouterProcessor extends AbstractProcessor {
 
             //获取类简称
             String clazzName=element.getSimpleName().toString();
-            //设置生成的类名称
-            String finalClassName=clazzName+"$$ZRouter";
-
-            try{
-                JavaFileObject sourceFile = filer.createSourceFile(packageName + "." + finalClassName);
-                Writer writer = sourceFile.openWriter();
-                writer.write("package "+packageName+";\n");
-                writer.write("public class "+finalClassName+" {\n");
-                writer.write("public static Class<?> findTargetClass(String pathName){\n");
-                writer.write("if(pathName.equalsIgnoreCase(\""+path+"\")){\n");
-                writer.write("return "+clazzName+".class;\n");
-                writer.write("}");
-                writer.write("return null;\n");
-                writer.write("}\n");
-                writer.write("}\n");
-                writer.close();
-            }
-            catch (Exception ex){
-                ex.printStackTrace();
-            }
+//            //设置生成的类名称
+//            String finalClassName=clazzName+"$$ZRouter";
+//
+//            try{
+//                JavaFileObject sourceFile = filer.createSourceFile(packageName + "." + finalClassName);
+//                Writer writer = sourceFile.openWriter();
+//                writer.write("package "+packageName+";\n");
+//                writer.write("public class "+finalClassName+" {\n");
+//                writer.write("public static Class<?> findTargetClass(String pathName){\n");
+//                writer.write("if(pathName.equalsIgnoreCase(\""+path+"\")){\n");
+//                writer.write("return "+clazzName+".class;\n");
+//                writer.write("}");
+//                writer.write("return null;\n");
+//                writer.write("}\n");
+//                writer.write("}\n");
+//                writer.close();
+//            }
+//            catch (Exception ex){
+//                ex.printStackTrace();
+//            }
         }
 
         if (map.size()==0){
             messager.printMessage(Diagnostic.Kind.NOTE,"activity map is null..");
             return false;
+        }
+
+        Writer writer=null;
+        String clsName="ActivityTools"+System.currentTimeMillis();
+        try {
+            JavaFileObject sourceFile = filer.createSourceFile("com.zy.router." + clsName);
+            writer=sourceFile.openWriter();
+//            writer.write("package com.zy.router;\n" +
+//                    "import com.zy.zrouter.ZRouter;" +
+//                    "import com.zy.zrouter.IRouter;" +
+//                    "public class "+clsName+" implements IRouter{\n" +
+//                    "}\n");
+//            );
+            writer.write("package com.zy.router;\n");
+            writer.write("import com.zy.zrouter.ZRouter;\n");
+            writer.write("import com.zy.zrouter.IRouter;\n");
+            writer.write("public class "+clsName+" implements IRouter{\n");
+            writer.write("  @Override\n");
+            writer.write("  public void putActivity(){\n");
+            Iterator<String> iterator = map.keySet().iterator();
+            while (iterator.hasNext()){
+                String actKey = iterator.next();
+                String cls=map.get(actKey);
+                writer.write("      ZRouter.getInstance().put(\""+actKey+"\","+cls+");\n");
+            }
+
+            writer.write("  }\n");
+            writer.write("}\n");
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if (writer!=null){
+                try {
+                    writer.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
 

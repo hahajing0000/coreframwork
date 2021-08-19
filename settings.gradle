@@ -1,3 +1,4 @@
+include ':UserCenter'
 include ':Storage'
 include ':MVVMCore'
 include ':apt-router-processor'
