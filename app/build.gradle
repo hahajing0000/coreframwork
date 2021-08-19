@@ -16,6 +16,12 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName(), pkgName: "com.zy.apt"]
+            }
+        }
     }
 
     buildTypes {

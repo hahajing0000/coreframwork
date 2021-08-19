@@ -63,6 +63,24 @@ public abstract class StorageChain<T> {
         nextChain.previousChain=this;
     }
 
+    public StorageChain getNextChain() {
+        return nextChain;
+    }
+    
+    /**
+     * 判断是否有下级节点
+     * @param
+     * @return 
+     * @author zhangyue
+     * @time 2021/8/19 9:16
+     */ 
+    public boolean hasNext(){
+        if (nextChain!=null){
+            return true;
+        }
+        return false;
+    }
+
     /**
      * 存入值暴露给别人使用 已经适配了对应关系
      * @param
@@ -74,7 +92,7 @@ public abstract class StorageChain<T> {
         //当前节点已经存储
         saveData(key,value);
         if (this.nextChain!=null){
-            this.nextChain.saveData(key,value);
+            this.nextChain.putValue(key,value);
         }
     }
 
@@ -127,6 +145,18 @@ public abstract class StorageChain<T> {
         if (this.nextChain!=null){
             this.nextChain.removeAll();
         }
+    }
+
+    /**
+     * 获取首节点
+     * @return
+     */
+    public StorageChain getFirstChain(){
+        StorageChain own=this;
+        while (own.previousChain!=null){
+            own=previousChain;
+        }
+        return own;
     }
 
 }

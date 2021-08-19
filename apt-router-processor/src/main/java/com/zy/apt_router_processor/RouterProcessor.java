@@ -33,6 +33,14 @@ public class RouterProcessor extends AbstractProcessor {
 
     private Filer filer;
     private Messager messager;
+    /**
+     * 自定义的包名 存放注解生成类
+     */
+    private String pkgName;
+    /**
+     * 子模块名称
+     */
+    private String moduleName;
 
 
     @Override
@@ -57,6 +65,11 @@ public class RouterProcessor extends AbstractProcessor {
         elementsUtils=processingEnvironment.getElementUtils();
         filer=processingEnvironment.getFiler();
         messager = processingEnvironment.getMessager();
+        pkgName = processingEnvironment.getOptions().get(ConstantValue.CUSTOM_PACKAGE_NAME);
+        moduleName = processingEnvironment.getOptions().get(ConstantValue.MODULE_NAME);
+
+        messager.printMessage(Diagnostic.Kind.NOTE,"moduleName="+moduleName);
+        messager.printMessage(Diagnostic.Kind.NOTE,"pkgName="+pkgName);
     }
 
     @Override
