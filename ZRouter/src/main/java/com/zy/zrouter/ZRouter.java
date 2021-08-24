@@ -57,6 +57,17 @@ public class ZRouter {
         }
     }
 
+    /**
+     * 获取map
+     * @param
+     * @return 
+     * @author zhangyue
+     * @time 2021/8/20 8:29
+     */ 
+    public static Map<String, Class<? extends Activity>> getMap() {
+        return map;
+    }
+
     public void jump(String activityName){
         jump(activityName,null);
     }

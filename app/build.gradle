@@ -49,7 +49,7 @@ dependencies {
     implementation project(path: ':Common')
     implementation project(path: ':ZRouter')
     implementation project(path: ':Storage')
-    implementation project(path: ':UserCenter')
+    implementation project(path: ':Logger')
     kapt project(path: ':apt-router-processor')
     implementation project(path: ':apt-router-annotation')
     testImplementation 'junit:junit:4.12'

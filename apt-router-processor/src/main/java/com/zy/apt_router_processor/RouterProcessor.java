@@ -81,6 +81,7 @@ public class RouterProcessor extends AbstractProcessor {
          */
         Set<? extends Element> elements = roundEnvironment.getElementsAnnotatedWith(ZRoute.class);
         Map<String,String> map=new HashMap<>();
+        Map<String,String> sumMap=new HashMap<>();
         for (Element element:
              elements) {
 
@@ -126,19 +127,14 @@ public class RouterProcessor extends AbstractProcessor {
         }
 
         Writer writer=null;
-        String clsName="ActivityTools"+System.currentTimeMillis();
+        String clsName="ActivityTools$$"+moduleName;
+        String pkgname_prefix="com.zy.router";
         try {
-            JavaFileObject sourceFile = filer.createSourceFile("com.zy.router." + clsName);
+            JavaFileObject sourceFile = filer.createSourceFile(pkgname_prefix+"." + clsName);
             writer=sourceFile.openWriter();
-//            writer.write("package com.zy.router;\n" +
-//                    "import com.zy.zrouter.ZRouter;" +
-//                    "import com.zy.zrouter.IRouter;" +
-//                    "public class "+clsName+" implements IRouter{\n" +
-//                    "}\n");
-//            );
-            writer.write("package com.zy.router;\n");
-            writer.write("import com.zy.zrouter.ZRouter;\n");
-            writer.write("import com.zy.zrouter.IRouter;\n");
+            writer.write("package "+pkgname_prefix+";\n");
+            writer.write("import "+pkgname_prefix+".ZRouter;\n");
+            writer.write("import "+pkgname_prefix+".IRouter;\n");
             writer.write("public class "+clsName+" implements IRouter{\n");
             writer.write("  @Override\n");
             writer.write("  public void putActivity(){\n");
@@ -151,6 +147,8 @@ public class RouterProcessor extends AbstractProcessor {
 
             writer.write("  }\n");
             writer.write("}\n");
+
+            sumMap.put(moduleName,pkgname_prefix+"."+clsName);
         }catch (Exception e){
             e.printStackTrace();
         }finally {
