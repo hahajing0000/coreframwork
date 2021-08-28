@@ -7,7 +7,7 @@ import android.os.Bundle;
 import com.zy.apt_router_annotation.ZRoute;
 import com.zy.zrouter.ZRouter;
 
-//@ZRoute(path = "/main/activity3")
+@ZRoute(path = "/main/activity3")
 public class MainActivity3 extends AppCompatActivity {
 
     @Override

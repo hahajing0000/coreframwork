@@ -126,40 +126,41 @@ public class RouterProcessor extends AbstractProcessor {
             return false;
         }
 
-        Writer writer=null;
-        String clsName="ActivityTools$$"+moduleName;
-        String pkgname_prefix="com.zy.router";
-        try {
-            JavaFileObject sourceFile = filer.createSourceFile(pkgname_prefix+"." + clsName);
-            writer=sourceFile.openWriter();
-            writer.write("package "+pkgname_prefix+";\n");
-            writer.write("import "+pkgname_prefix+".ZRouter;\n");
-            writer.write("import "+pkgname_prefix+".IRouter;\n");
-            writer.write("public class "+clsName+" implements IRouter{\n");
-            writer.write("  @Override\n");
-            writer.write("  public void putActivity(){\n");
-            Iterator<String> iterator = map.keySet().iterator();
-            while (iterator.hasNext()){
-                String actKey = iterator.next();
-                String cls=map.get(actKey);
-                writer.write("      ZRouter.getInstance().put(\""+actKey+"\","+cls+");\n");
-            }
+//        Writer writer=null;
+//        String clsName="ActivityTools$$"+moduleName;
+//        String pkgname_prefix="com.zy.zrouter";
+//        try {
+//            JavaFileObject sourceFile = filer.createSourceFile(pkgname_prefix+"." + clsName);
+//            writer=sourceFile.openWriter();
+//            writer.write("package "+pkgname_prefix+";\n");
+//            writer.write("import "+pkgname_prefix+".ZRouter;\n");
+//            writer.write("import "+pkgname_prefix+".IRouter;\n");
+//            writer.write("public class "+clsName+" implements IRouter{\n");
+//            writer.write("  @Override\n");
+//            writer.write("  public void putActivity(){\n");
+//            Iterator<String> iterator = map.keySet().iterator();
+//            while (iterator.hasNext()){
+//                String actKey = iterator.next();
+//                String cls=map.get(actKey);
+//                writer.write("      ZRouter.getInstance().put(\""+actKey+"\","+cls+");\n");
+//            }
+//
+//            writer.write("  }\n");
+//            writer.write("}\n");
+//
+//            sumMap.put(moduleName,pkgname_prefix+"."+clsName);
+//        }catch (Exception e){
+//            e.printStackTrace();
+//        }finally {
+//            if (writer!=null){
+//                try {
+//                    writer.close();
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
 
-            writer.write("  }\n");
-            writer.write("}\n");
-
-            sumMap.put(moduleName,pkgname_prefix+"."+clsName);
-        }catch (Exception e){
-            e.printStackTrace();
-        }finally {
-            if (writer!=null){
-                try {
-                    writer.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
 
 
         return true;

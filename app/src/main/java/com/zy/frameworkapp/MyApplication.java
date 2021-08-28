@@ -1,6 +1,7 @@
 package com.zy.frameworkapp;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.zy.apt_router_annotation.ZRoute;
 import com.zy.zrouter.ZRouter;
@@ -18,9 +19,15 @@ import com.zy.zrouter.ZRouter;
  * @Version: 1.0
  */
 public class MyApplication extends Application {
+    private static Context context;
     @Override
     public void onCreate() {
         super.onCreate();
         ZRouter.getInstance().init(this);
+        context=getApplicationContext();
+    }
+
+    public static Context getContext(){
+        return context;
     }
 }

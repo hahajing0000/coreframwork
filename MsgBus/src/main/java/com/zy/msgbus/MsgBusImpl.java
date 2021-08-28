@@ -5,6 +5,7 @@ import android.os.Looper;
 
 import androidx.collection.ArrayMap;
 
+import java.lang.ref.WeakReference;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -228,6 +229,8 @@ class MsgBusImpl implements IMsgBus {
      * @time 2021/8/5 15:08
      */ 
     private void doAsync(Runnable runnable){
+//        WeakReference<Runnable> weakReference=new WeakReference<>(runnable);
+//        getExecutorService().submit(weakReference.get());
         getExecutorService().submit(runnable);
     }
     

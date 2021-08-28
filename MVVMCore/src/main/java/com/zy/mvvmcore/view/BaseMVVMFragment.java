@@ -1,9 +1,10 @@
 package com.zy.mvvmcore.view;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.databinding.ViewDataBinding;
 
@@ -15,55 +16,52 @@ import java.util.Map;
 /**
  * @ProjectName: FrameworkApp
  * @Package: com.zy.mvvmcore.view
- * @ClassName: BaseActivity
+ * @ClassName: BaseMVVMFragment
  * @Description:
  * @Author: 张跃 企鹅：444511958
- * @CreateDate: 2021/8/16 16:26
+ * @CreateDate: 2021/8/28 7:57
  * @UpdateUser: 张跃
- * @UpdateDate: 2021/8/16 16:26
+ * @UpdateDate: 2021/8/28 7:57
  * @UpdateRemark:
  * @Version: 1.0
  */
-public abstract class BaseMVVMActivity<VM extends BaseViewModel,Binding extends ViewDataBinding> extends BaseActivity {
+public abstract class BaseMVVMFragment<VM extends BaseViewModel,Binding extends ViewDataBinding> extends BaseFragment {
     protected Binding mBinding;
     protected VM mViewModel;
     private HashMap<Integer,Object> mMap=new HashMap<>();
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
-    protected void initEnv() {
-        mBinding = DataBindingUtil.setContentView(this, getLayoutId());
+    protected View createView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mBinding = DataBindingUtil.inflate(inflater,getLayoutId(),null,false);
         //设置生命周期的所有者 如果不设置使用LiveData页面将无法获取到数据的更新
         mBinding.setLifecycleOwner(this);
         mViewModel=createViewModel();
         prepareSetVars(mMap);
         setVars(mBinding,mMap);
+        return mBinding.getRoot();
     }
 
     /**
      * 创建ViewModel实例
-     * @param 
-     * @return 
+     * @param
+     * @return
      * @author zhangyue
      * @time 2021/8/17 8:59
-     */ 
+     */
     protected abstract VM createViewModel();
 
     /**
      * 设置变量
-     * @param 
-     * @return 
+     * @param
+     * @return
      * @author zhangyue
      * @time 2021/8/16 16:43
-     */ 
+     */
     private void setVars(Binding mBinding, HashMap<Integer, Object> mMap) {
         if (mMap.size()==0){
             throw new RuntimeException("please set variable...");
         }
-        
+
         for (Map.Entry<Integer,Object> entry:mMap.entrySet()){
             mBinding.setVariable(entry.getKey(),entry.getValue());
         }
@@ -71,20 +69,19 @@ public abstract class BaseMVVMActivity<VM extends BaseViewModel,Binding extends 
 
     /**
      * 准备设置数据源
-     * @param 
-     * @return 
+     * @param
+     * @return
      * @author zhangyue
      * @time 2021/8/17 8:59
-     */ 
+     */
     protected abstract void prepareSetVars(HashMap<Integer, Object> mMap);
 
     /**
      * 获取布局资源id
      * @param
-     * @return 
+     * @return
      * @author zhangyue
      * @time 2021/8/17 9:00
-     */ 
+     */
     protected abstract int getLayoutId();
-
 }
