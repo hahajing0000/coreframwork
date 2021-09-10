@@ -38,6 +38,7 @@ public abstract class BaseMVVMFragment<VM extends BaseViewModel,Binding extends 
         mViewModel=createViewModel();
         prepareSetVars(mMap);
         setVars(mBinding,mMap);
+
         return mBinding.getRoot();
     }
 
