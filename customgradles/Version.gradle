@@ -1,0 +1,18 @@
+ext{
+    versions=[
+            kotlin_version:"1.3.72",
+            compileSdkVersion:30,
+            buildToolsVersion:"30.0.3",
+            minSdkVersion:16,
+            targetSdkVersion:30,
+            appcompat:"1.2.0",
+            constraintlayout:"2.0.4",
+
+            rxjava:"2.2.21",
+            rxbinding:"2.0.0",
+            disklrucache:"2.0.2",
+
+            javapoet:"1.13.0",
+            autoservice:"1.0-rc7",
+    ]
+}
