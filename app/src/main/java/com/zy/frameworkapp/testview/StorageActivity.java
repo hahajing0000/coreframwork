@@ -1,4 +1,4 @@
-package com.zy.frameworkapp;
+package com.zy.frameworkapp.testview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.zy.frameworkapp.R;
 import com.zy.frameworkapp.storagechain.NetStorageChain;
 import com.zy.frameworkapp.storagechain.OtherStroageChain;
 import com.zy.storage.StorageChainManager;

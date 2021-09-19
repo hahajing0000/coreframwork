@@ -1,4 +1,4 @@
-package com.zy.frameworkapp;
+package com.zy.frameworkapp.testview;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.zy.apt_router_annotation.ZRoute;
+import com.zy.frameworkapp.BuildConfig;
+import com.zy.frameworkapp.R;
 import com.zy.frameworkapp.schedule.PlanA;
 import com.zy.frameworkapp.schedule.ScheduleEntity;
 import com.zy.logger.Logger;

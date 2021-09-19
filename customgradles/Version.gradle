@@ -14,5 +14,6 @@ ext{
 
             javapoet:"1.13.0",
             autoservice:"1.0-rc7",
+            glide:"4.5.0",
     ]
 }

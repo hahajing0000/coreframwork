@@ -1,10 +1,11 @@
-package com.zy.frameworkapp;
+package com.zy.frameworkapp.testview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
 import com.zy.apt_router_annotation.ZRoute;
+import com.zy.frameworkapp.R;
 import com.zy.zrouter.ZRouter;
 
 @ZRoute(path = "/main/activity3")
