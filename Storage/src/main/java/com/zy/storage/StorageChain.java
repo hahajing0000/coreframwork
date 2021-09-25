@@ -106,7 +106,7 @@ public abstract class StorageChain<T> {
     public void getValue(final String key, final ResultCallback<T> callback){
         getData(key, new ResultCallback<T>() {
             @Override
-            public void Sucess(T t) {
+            public void Success(T t) {
                 //当前链节点没有取到对应数据则向下级节点获取
                 if (null==t){
                     nextChain.getValue(key,callback);
@@ -118,7 +118,12 @@ public abstract class StorageChain<T> {
                     }
                 }
 
-                callback.Sucess(t);
+                callback.Success(t);
+            }
+
+            @Override
+            public void Failed(Throwable throwable) {
+
             }
         });
     }

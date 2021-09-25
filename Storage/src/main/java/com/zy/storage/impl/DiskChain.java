@@ -25,7 +25,7 @@ public class DiskChain<T> extends StorageChain<T> {
     @Override
     protected void getData(String key, ResultCallback<T> callback) {
         T value = (T) DiskLRUCacheUtils.getInstance().getValue(key);
-        callback.Sucess(value);
+        callback.Success(value);
     }
 
     @Override

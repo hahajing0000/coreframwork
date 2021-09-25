@@ -13,5 +13,20 @@ package com.zy.storage.callback;
  * @Version: 1.0
  */
 public interface ResultCallback<T> {
-    void Sucess(T t);
+    /**
+     * 成功
+     * @param 
+     * @return 
+     * @author zhangyue
+     * @time 2021/9/25 8:28
+     */ 
+    void Success(T t);
+    /**
+     * 失败
+     * @param 
+     * @return 
+     * @author zhangyue
+     * @time 2021/9/25 8:28
+     */ 
+    void Failed(Throwable throwable);
 }

@@ -26,7 +26,7 @@ public class MemoryChain<T> extends StorageChain<T> {
     protected void getData(String key, ResultCallback<T> callback) {
         T value = (T) LRUCacheUtils.getInstance().getValue(key);
         if (null!=callback){
-            callback.Sucess(value);
+            callback.Success(value);
         }
 
     }

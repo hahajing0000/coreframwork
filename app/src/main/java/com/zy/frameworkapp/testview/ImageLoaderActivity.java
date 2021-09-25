@@ -2,6 +2,7 @@ package com.zy.frameworkapp.testview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.widget.ImageView;
 
@@ -14,13 +15,19 @@ public class ImageLoaderActivity extends AppCompatActivity {
     private ImageView ivImageloaderTest;
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(newBase);
+
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_loader);
 
         ivImageloaderTest = (ImageView) findViewById(R.id.iv_imageloader_test);
 
-        ImageLoaderManager manager=new ImageLoaderManager(StrategyType.Glide);
+        ImageLoaderManager manager=new ImageLoaderManager(StrategyType.Fresco);
         ImageOptions options=new ImageOptions.Builder()
                 .setPlaceImage(R.mipmap.ic_launcher)
                 .setErrorImage(R.mipmap.ic_launcher)
