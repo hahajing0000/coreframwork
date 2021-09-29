@@ -23,7 +23,6 @@ import java.util.concurrent.ConcurrentHashMap;
  * @Version: 1.0
  */
 public class StorageChainManager {
-//    ArrayMap<String,String> map=new ArrayMap<>(); HashMap HashTable
     private static ConcurrentHashMap<String,StorageChain> chainMap;
     private static StorageChainManager instance=null;
     private StorageChainManager(){

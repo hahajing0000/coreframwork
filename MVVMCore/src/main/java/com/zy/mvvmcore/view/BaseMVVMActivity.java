@@ -85,6 +85,7 @@ public abstract class BaseMVVMActivity<VM extends BaseViewModel,Binding extends 
      * @author zhangyue
      * @time 2021/8/17 9:00
      */ 
+    @Override
     protected abstract int getLayoutId();
 
 }

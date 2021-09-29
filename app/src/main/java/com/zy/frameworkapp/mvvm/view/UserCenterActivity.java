@@ -1,8 +1,10 @@
 package com.zy.frameworkapp.mvvm.view;
 
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+import android.app.Dialog;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,6 +35,17 @@ public class UserCenterActivity extends BaseMVVMActivity<UserCenterViewModel, Us
 
     @Override
     protected void loadData() {
+    }
+
+    @Override
+    protected Dialog createLoadingDialog() {
+        return null;
+    }
+
+
+    @Override
+    protected Toolbar crateToolBar() {
+        return null;
     }
 
     @Override

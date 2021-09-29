@@ -47,8 +47,13 @@ public class StorageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 StorageChainManager.getInstance().getValue(CHAINKEY, "testkey", new ResultCallback() {
                     @Override
-                    public void Sucess(Object o) {
+                    public void Success(Object o) {
                         Log.d("123", "Sucess: "+o.toString());
+                    }
+
+                    @Override
+                    public void Failed(Throwable throwable) {
+
                     }
                 });
             }
