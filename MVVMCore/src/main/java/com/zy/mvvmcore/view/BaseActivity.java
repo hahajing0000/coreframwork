@@ -65,7 +65,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         mScreenWidth = displayMetrics.widthPixels;
 
         if (statusBarCompat) {
-            StatusBarCompat.compat(this, ContextCompat.getColor(this, getPrimaryDarkColor()));
+            StatusBarCompat.compat(this, getPrimaryDarkColor());
             transparent19and20();
         }
         setContentView(getLayoutId());
