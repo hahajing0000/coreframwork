@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.zy.frameworkapp.mvvm.view.UserCenterActivity
 import com.zy.msgbus.MsgBus
 import com.zy.msgbus.Subscribe
 import com.zy.msgbus.ThreadMode
@@ -14,6 +15,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        startActivity(Intent(this@MainActivity,UserCenterActivity::class.java))
 
         btn_main_Test.setOnClickListener {
             startService(Intent(this@MainActivity,TestService::class.java))

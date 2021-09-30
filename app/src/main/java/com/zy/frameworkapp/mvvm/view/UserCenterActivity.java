@@ -54,6 +54,11 @@ public class UserCenterActivity extends BaseMVVMActivity<UserCenterViewModel, Us
     }
 
     @Override
+    protected int getPrimaryDarkColor() {
+        return R.color.colorPrimaryDark;
+    }
+
+    @Override
     protected void prepareSetVars(HashMap mMap) {
         mMap.put(BR.viewModel,mViewModel);
         mMap.put(BR.mine,this);
