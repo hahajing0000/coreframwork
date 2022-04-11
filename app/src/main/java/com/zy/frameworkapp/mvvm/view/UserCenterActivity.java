@@ -55,7 +55,7 @@ public class UserCenterActivity extends BaseMVVMActivity<UserCenterViewModel, Us
 
     @Override
     protected int getPrimaryDarkColor() {
-        return R.color.colorPrimaryDark;
+        return R.color.colorPrimary;
     }
 
     @Override

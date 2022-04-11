@@ -2,9 +2,6 @@
     package="com.zy.logger">
 
     <application>
-        <provider
-            android:authorities="com.zy.logger.contextprovider"
-            android:name=".LoggerInstaller"
-            android:exported="false"></provider>
+
     </application>
 </manifest>
