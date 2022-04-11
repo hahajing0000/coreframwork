@@ -1,5 +1,7 @@
 package com.zy.mvvmcore.view;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import java.lang.ref.WeakReference;
 
 /**
  * @ProjectName: FrameworkApp
@@ -24,13 +28,23 @@ import androidx.fragment.app.Fragment;
  * @Version: 1.0
  */
 public abstract class BaseFragment extends Fragment {
+    private WeakReference<View> contentView;
+    protected WeakReference<Context> appContext;
+    protected WeakReference<Activity> mActivity;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        appContext=new WeakReference<>(getActivity().getApplicationContext());
+        mActivity=new WeakReference<Activity>(getActivity());
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return createView(inflater,container,savedInstanceState);
+        contentView=new WeakReference<View>(createView(inflater,container,savedInstanceState));
+        return contentView.get();
     }
-
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -79,6 +93,13 @@ public abstract class BaseFragment extends Fragment {
     
     private void showShortMsg(String msg){
         Toast.makeText(getActivity(), msg, Toast.LENGTH_SHORT).show();
+    }
+
+    protected <T extends View> T findViewById(int id){
+        if (contentView!=null){
+            return contentView.get().findViewById(id);
+        }
+        return null;
     }
 
     /**
