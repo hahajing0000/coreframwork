@@ -46,7 +46,6 @@ dependencies {
     implementation project(path: ':MVPCore')
     implementation project(path: ':MsgBus')
     implementation project(path: ':MVVMCore')
-    implementation project(path: ':Common')
     implementation project(path: ':ZRouter')
     implementation project(path: ':Storage')
     implementation project(path: ':Logger')
