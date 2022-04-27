@@ -23,6 +23,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/apt-router-annotation" />
             <option value="$PROJECT_DIR$/apt-router-processor" />
+            <option value="$PROJECT_DIR$/common" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

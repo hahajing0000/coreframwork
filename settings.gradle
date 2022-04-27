@@ -7,6 +7,7 @@ include ':apt-router-annotation'
 include ':ZRouter'
 include ':MsgBus'
 include ':Logger'
+include ':common'
 include ':MVPCore'
 include ':app'
 rootProject.name = "FrameworkApp"

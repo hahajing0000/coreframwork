@@ -25,6 +25,7 @@
       <module name="apt-router-processor" target="1.7" />
       <module name="FrameworkApp.app" target="1.8" />
       <module name="FrameworkApp.Common" target="1.8" />
+      <module name="FrameworkApp.common" target="1.8" />
       <module name="FrameworkApp.ImageLoader" target="1.8" />
       <module name="FrameworkApp.Logger" target="1.8" />
       <module name="FrameworkApp.MsgBus" target="1.8" />
